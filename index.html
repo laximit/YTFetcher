@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>YouTube Video Info</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="ytFetcher">
+    <input class="ytInput" type="text" id="youtubeUrl" placeholder="Paste YouTube URL here">
+    <button class="ytGetBtn" onclick="updateYTFrame()">Get Info</button>
+    <button class="ytDownloadBtn" id="ytDownloadBtn">Download</button>
+  </div>
+
+  <div class="ytFrame" id="ytFrame">
+    <div class="ytFrameBG">
+      <div class="thumbFrame">
+        <img src="https://i.ytimg.com/vi/X0i_if7cL9A/maxresdefault.jpg" alt="ytThumb" class="ytThumb">
+        <span class="ytTimestamp">00:00</span>
+      </div>
+      <span class="ytTitle">Video Title</span>
+      <div class="ytInfo">
+        <span class="ytChannelName">Channel</span>
+        <span class="ytViews">Views</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="videofetch.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script src="videodownload.js"></script>
+</body>
+</html>
