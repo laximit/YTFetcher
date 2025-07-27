@@ -7,6 +7,7 @@
   --bg-color-2: #1c1c1c;
   --border-1: #525252;
   --border-2: #101010;
+  --transition: .1s ease-in-out;
 }
 
 body { 
@@ -14,7 +15,7 @@ body {
   width: 100vw;
   height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   overflow: hidden;
@@ -30,22 +31,24 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: var(--transition);
 }
 
 .ytFrameBG {
-  width: calc(100% - 4px);
-  height: calc(100% - 4px);
+  width: calc(100% - 6px);
+  height: calc(100% - 6px);
   background-color: var(--bg-color-1);
   display: flex;
   flex-direction: column;
-  border-radius: 20px;
+  border-radius: 18px;
+  transition: var(--transition);
 }
 
 .thumbFrame {
   width: 100%;
   position: relative;
   display: inline-block;
-  
+  transition: var(--transition);
 }
 
 .ytThumb {
@@ -53,6 +56,7 @@ body {
   display: block;
   margin: 18px;
   border-radius: 18px;
+  transition: var(--transition);
 }
 
 .ytTimestamp {
@@ -65,6 +69,7 @@ body {
   padding: 5px 10px;
   border-radius: 9px;
   color: var(--text-color-1);
+  transition: var(--transition);
 }
 
 .ytTitle {
@@ -79,6 +84,7 @@ body {
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+  transition: var(--transition);
 }
 
 .ytInfo {
@@ -93,44 +99,249 @@ body {
   font-weight: 600;
   color: var(--text-color-2);
   border-radius: 10px;
+  transition: var(--transition);
 }
 
 .ytFetcher {
-  width: 855px;
+  width: 400px;
   display: flex;
+  gap: 5px;
+  flex-direction: column;
+  align-items: center;
 }
 
-.ytInput {
+.byLink, .channelInputs {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  background-color: var(--bg-color-1);
+  gap: 5px;
+  padding: 10px;
+  border-radius: 10px;
+  scale: 1;
+  transition: var(--transition);
+}
+
+.ytLinkInput, .ytChannelLinkInput {
   width: 100%;
   height: 15px;
   padding: 10px;
   border: 1px solid var(--text-color-1);
   color: var(--text-color-2);
   background-color: var(--bg-color-2);
-  margin: 5px;
   font-weight: 600;
   font-family: "Roboto", sans-serif;
   font-size: 15px;
   border-radius: 5px;
 }
 
-.ytGetBtn, .ytDownloadBtn {
-  width: 150px;
+.linkButtons {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+}
+
+.ytGetBtn {
+  padding: 0 15px;
+  height: 35px;
   font-weight: 800;
   font-family: "Roboto", sans-serif;
   font-size: 18px;
-  margin: 5px;
   border: none;
   border-radius: 5px;
   background-color: var(--text-color-2);
   color: var(--bg-color-1);
   
-  transition: .1s ease-in-out;
+  transition: var(--transition);
 }
-.ytGetBtn:hover, .ytDownloadBtn:hover {
+
+.byManual {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--bg-color-1);
+  gap: 5px;
+  padding: 10px;
+  border-radius: 10px;
+  transition: var(--transition);
+}
+
+.manualTitleGroup {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  color: var(--text-color-1);
+}
+
+.manualInput {
+  width: calc(100% - 20px);
+  height: 15px;
+  padding: 10px;
+  border: 1px solid var(--text-color-1);
+  color: var(--text-color-2);
+  background-color: var(--bg-color-2);
+  font-weight: 600;
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  border-radius: 5px;
+}
+
+.manualInputName {
+  font-family: "Roboto", sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.ytManualSetBtn {
+  width: 100%;
+  height: 30px;
+  font-weight: 800;
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--text-color-2);
+  color: var(--bg-color-1);
+  margin-top: 10px;
+  transition: var(--transition);
+}
+
+.ytDownloadBtn {
+  width: 80%;
+  height: 30px;
+  font-weight: 800;
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--text-color-2);
+  color: var(--bg-color-1);
+  
+  transition: var(--transition);
+}
+
+.ytDownloadBtn:hover, .ytGetBtn:hover, .ytManualSetBtn:hover {
   color: var(--text-color-2);
   background-color: var(--bg-color-1);
   border: 1px solid var(--text-color-1);
-  transition: .1s ease-in-out;
+  transition: var(--transition);
   cursor: pointer;
+}
+
+.modeChange {
+  background-color: var(--bg-color-1);
+  width: 80%;
+  padding: 10px;
+  display: flex;
+  gap: 5px;
+  border-radius: 10px;
+}
+
+.modeBtn {
+  width: 50%;
+  height: 30px;
+  border: none;
+  background-color: #00000000;
+  font-family: "Roboto", sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--text-color-1);
+  z-index: 2;
+  cursor: pointer;
+}
+
+.currentMode {
+  z-index: 3;
+  width: 160px;
+  height: 30px;
+  position: absolute;
+  border-radius: 5px;
+  margin-left: 0px;
+  background-color: #fff;
+  mix-blend-mode: difference;
+  transition: var(--transition);
+}
+
+.finalResult {
+  display: flex;
+  flex-direction: column;
+}
+
+.ytChannelFrame {
+  margin: 40px;
+  width: 750px;
+  height: 250px;
+  background: linear-gradient(165deg, var(--border-1), var(--border-2) 50%, var(--border-1));
+  border-radius: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+  transition: var(--transition);
+}
+
+.ytChannelFrameBG {
+  width: 100%;
+  height: 76%;
+  background-color: var(--bg-color-1);
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  padding: 30px;
+  
+  transition: var(--transition);
+}
+
+.ytChannelPic {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.ytChannelInfo {
+  color: var(--text-color-1);
+  display: flex;
+  flex-direction: column;
+  font-family: "Roboto", sans-serif;
+  margin-left: 30px;
+  width: 100%;
+}
+
+.ytChannelProfileName {
+  font-size: 50px;
+  font-weight: 800;
+}
+
+.ytChannelTag {
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 5px;
+}
+
+.ytChannelDetails {
+  background-color: var(--bg-color-2);
+  padding: 15px 20px;
+  font-size: 20px;
+  font-weight: 800;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px;
+}
+
+.ytChannelSubs {}
+
+.ytChannelVideos {
+  margin-left: auto;
+}
+
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+  height: 0;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  transition: var(--transition);
 }

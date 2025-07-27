@@ -7,27 +7,83 @@
 </head>
 <body>
   <div class="ytFetcher">
-    <input class="ytInput" type="text" id="youtubeUrl" placeholder="Paste YouTube URL here">
-    <button class="ytGetBtn" onclick="updateYTFrame()">Get Info</button>
+    <div class="modeChange">
+      <div class="currentMode" id="currentMode"></div>
+      <button class="modeBtn" id="modeThumb" onclick="changeToThumb()">Thumbnail</button>
+      <button class="modeBtn" id="modeChannel" onclick="changeToChannel()">Channel</button>
+    </div>
+
+    
+    <div class="channelInputs hidden" id="channelInputs">
+      <input class="ytChannelLinkInput" type="text" id="youtubeChannelUrl" placeholder="Paste Channel URL here">
+      <button class="ytGetBtn" onclick="fetchChannelFromUrl()">Get</button>
+    </div>
+
+    <div class="byLink" id="byLink">
+      <input class="ytLinkInput" type="text" id="youtubeUrl" placeholder="Paste YouTube URL here">
+      <button class="ytGetBtn" onclick="updateYTFrame()">Get</button>
+    </div>
+    
+    <div class="byManual" id="byManual">
+      <div class="manualTitleGroup">
+        <span class="manualInputName">Thumbnail:</span>
+        <input type="file" accept="image/*" class="manualInput" id="ytThumbInput">
+      </div>
+      <div class="manualTitleGroup">
+        <span class="manualInputName">Title:</span>
+        <input type="text" placeholder="Video Title" class="manualInput" id="ytTitleInput">
+      </div>
+      <div class="manualTitleGroup">
+        <span class="manualInputName">Channel:</span>
+        <input type="text" placeholder="Channel Name" class="manualInput" id="ytChannelInput">
+      </div>
+      <div class="manualTitleGroup">
+        <span class="manualInputName">Views:</span>
+        <input type="text" placeholder="Video Views" class="manualInput" id="ytViewsInput">
+      </div>
+      <div class="manualTitleGroup">
+        <span class="manualInputName">Duration:</span>
+        <input type="text" placeholder="Video Duration" class="manualInput" id="ytTimeInput">
+      </div>
+      <button class="ytManualSetBtn" id="ytManualSetBtn" onclick="updateYTManual()">Set</button>
+    </div>
     <button class="ytDownloadBtn" id="ytDownloadBtn">Download</button>
   </div>
 
-  <div class="ytFrame" id="ytFrame">
-    <div class="ytFrameBG">
-      <div class="thumbFrame">
-        <img src="https://i.ytimg.com/vi/X0i_if7cL9A/maxresdefault.jpg" alt="ytThumb" class="ytThumb">
-        <span class="ytTimestamp">00:00</span>
+  <div class="finalResult">
+    <div class="ytFrame" id="ytFrame">
+      <div class="ytFrameBG">
+        <div class="thumbFrame">
+          <img src="https://i.ytimg.com/vi/X0i_if7cL9A/maxresdefault.jpg" class="ytThumb" id="ytThumb">
+          <span class="ytTimestamp" id="ytTimestamp">00:00</span>
+        </div>
+        <span class="ytTitle" id="ytTitle">Video Title</span>
+        <div class="ytInfo">
+          <span class="ytChannelName" id="ytChannelName">Channel</span>
+          <span class="ytViews" id="ytViews">Views</span>
+        </div>
       </div>
-      <span class="ytTitle">Video Title</span>
-      <div class="ytInfo">
-        <span class="ytChannelName">Channel</span>
-        <span class="ytViews">Views</span>
+    </div>
+    <div class="ytChannelFrame hidden" id="ytChannelFrame">
+      <div class="ytChannelFrameBG" id="ytChannelFrameBG">
+        <img src="https://yt3.ggpht.com/drnSDZTFarDoob0D9YTDMTLZ390nyytLo6kjycN7bUv2mSd-2d8nqe8IZkQxzOJmcmpSQ814=s800-c-k-c0x00ffffff-no-rj" class="ytChannelPic" id="ytChannelPic">
+        <div class="ytChannelInfo" id="ytChannelInfo">
+          <span class="ytChannelProfileName" id="ytChannelProfileName"> Felps LIVE</span>
+          <span class="ytChannelTag" id="ytChannelTag">@FelpsLIVE</span>
+          <div class="ytChannelDetails" id="ytChannelDetails">
+            <span class="ytChannelSubs" id="ytChannelSubs">724 mil inscritos</span>
+            <span class="ytChannelVideos" id="ytChannelVideos"> 3,7 mil videos</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-
+    
   <script src="../js/videofetch.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
   <script src="../js/videodownload.js"></script>
+  <script src="../js/videomanualset.js"></script>
+  <script src="../js/changemode.js"></script>
+  <script src="../js/channelfetch.js"></script>
 </body>
 </html>
